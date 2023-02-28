@@ -1,0 +1,4 @@
+.root {
+	-fx-background-image: url('../../../assets/partieTapie.jpg');
+	-fx-background-size: cover; 
+}

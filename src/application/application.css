@@ -1,0 +1,28 @@
+.root {
+	-fx-background-image: url('../../assets/memoryGame.jpg');
+	-fx-background-size: cover; 
+}
+
+#startGame {
+	-fx-background-color: red;
+}
+
+#startGame:hover {
+	-fx-background-color: #FC4C4C;
+	-fx-cursor: hand;
+}
+
+#customCards {
+	-fx-cursor: hand;
+	-fx-graphic: url("../../assets/customCards.png");
+	-fx-background-color: transparent
+}
+
+#close {
+	-fx-background-color: #D50000;
+}
+
+#close:hover {
+	-fx-background-color: #F30000;
+	-fx-cursor: hand;
+}
