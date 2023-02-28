@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
 <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles/gameStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
-   <top>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </top>
-   <left>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </left>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="carte1" layoutX="126.0" layoutY="92.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte2" layoutX="285.0" layoutY="92.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte3" layoutX="448.0" layoutY="92.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte4" layoutX="596.0" layoutY="92.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte5" layoutX="126.0" layoutY="275.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte6" layoutX="285.0" layoutY="275.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte7" layoutX="448.0" layoutY="275.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+            <Button fx:id="carte8" layoutX="596.0" layoutY="275.0" mnemonicParsing="false" onAction="#choiceCard" prefHeight="165.0" prefWidth="123.0" />
+         </children></Pane>
    </center>
 </BorderPane>
