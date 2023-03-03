@@ -2,3 +2,8 @@
 	-fx-background-image: url('../../../assets/partieTapie.jpg');
 	-fx-background-size: cover; 
 }
+
+#hub:hover {
+	-fx-background-color: #4CFCB9;
+	-fx-cursor: hand;
+}

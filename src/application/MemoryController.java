@@ -42,7 +42,7 @@ public class MemoryController {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Fermeture du jeu");
 		alert.setHeaderText("Voulez vous vraiment fermer le jeu ?");
-		alert.setContentText("Stardew Valley");
+		alert.setContentText("Memory Game");
 
 		Optional<ButtonType> option = alert.showAndWait();
 		if (option.get() == ButtonType.OK) {
