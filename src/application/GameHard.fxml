@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@styles/gameStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameHardController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="carte2" fitHeight="150.0" fitWidth="106.0" layoutX="273.0" layoutY="19.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte3" fitHeight="150.0" fitWidth="106.0" layoutX="104.0" layoutY="19.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte1" fitHeight="150.0" fitWidth="106.0" layoutX="437.0" layoutY="19.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte4" fitHeight="150.0" fitWidth="106.0" layoutX="603.0" layoutY="19.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte5" fitHeight="150.0" fitWidth="106.0" layoutX="104.0" layoutY="193.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte6" fitHeight="150.0" fitWidth="106.0" layoutX="273.0" layoutY="193.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte7" fitHeight="150.0" fitWidth="106.0" layoutX="437.0" layoutY="193.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte8" fitHeight="150.0" fitWidth="106.0" layoutX="603.0" layoutY="193.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="time" layoutX="19.0" layoutY="17.0" text="00:00" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Button id="hub" fx:id="hub" layoutX="201.0" layoutY="527.0" mnemonicParsing="false" onAction="#goToHub" prefHeight="25.0" prefWidth="202.0" text="Page d'accueil">
+               <font>
+                  <Font name="Bernard MT Condensed" size="12.0" />
+               </font>
+            </Button>
+            <Button id="btnRestart" fx:id="restart" layoutX="415.0" layoutY="527.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="25.0" prefWidth="202.0" text="Recommencer">
+               <font>
+                  <Font name="Bernard MT Condensed" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="score" layoutX="19.0" layoutY="48.0" text="Score : 0" textFill="WHITE" />
+            <ImageView fx:id="carte9" fitHeight="150.0" fitWidth="106.0" layoutX="104.0" layoutY="364.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte10" fitHeight="150.0" fitWidth="106.0" layoutX="273.0" layoutY="364.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte11" fitHeight="150.0" fitWidth="106.0" layoutX="437.0" layoutY="364.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="carte12" fitHeight="150.0" fitWidth="106.0" layoutX="603.0" layoutY="364.0" onMouseClicked="#choiceCard" pickOnBounds="true" preserveRatio="true" />
+         </children></Pane>
+   </center>
+</BorderPane>

@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -15,12 +16,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class MemoryController {
 	
-	private ObservableList<String> levelstems = FXCollections.observableArrayList("Facile", "Moyen", "Difficile");
+	private ObservableList<String> levelsItems = FXCollections.observableArrayList("Facile", "Moyen", "Difficile");
 	
 	@FXML
 	private ChoiceBox<String> choiceDifficult;
@@ -33,12 +36,13 @@ public class MemoryController {
 	
 	@FXML
 	public void initialize() {
-		choiceDifficult.setItems(levelstems);
+		choiceDifficult.setItems(levelsItems);
 		choiceDifficult.getSelectionModel().selectFirst();
 	}
 	
 	@FXML
 	public void closeGame(ActionEvent event) {
+		Main.soundClick();
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Fermeture du jeu");
 		alert.setHeaderText("Voulez vous vraiment fermer le jeu ?");
@@ -53,21 +57,44 @@ public class MemoryController {
 	
 	@FXML
 	public void startGame(ActionEvent event) {
+		Main.soundClick();
 		((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-		try {
-            Parent root;
-            Stage rapport = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass()
-                         .getResource("Game.fxml"));
-            
-            root = loader.load();
-            rapport.setScene(new Scene(root));
-            rapport.setTitle("Partie");
-            rapport.getIcons().add(new Image("file:assets/logo.jpg"));
-            rapport.show();
-        } catch (IOException e) {
-            System.out.println("Problème lors de" 
-                             + " la création de l'interface");
-        }
+		if (choiceDifficult.getValue() == "Difficile") {
+			try {
+	            Parent root;
+	            Stage niveauHard = new Stage();
+	            FXMLLoader loader = new FXMLLoader(getClass()
+	                         .getResource("GameHard.fxml"));
+	            
+	            root = loader.load();
+	            niveauHard.setScene(new Scene(root));
+	            niveauHard.setTitle("Partie");
+	            niveauHard.getIcons().add(new Image("file:assets/logo.jpg"));
+	            niveauHard.show();
+	            niveauHard.setResizable(false);
+	        } catch (IOException e) {
+	            System.out.println("Problème lors de" 
+	                             + " la création de l'interface");
+	        }
+		} else {
+			try {
+	            Parent root;
+	            Stage niveau = new Stage();
+	            FXMLLoader loader = new FXMLLoader(getClass()
+	                         .getResource("Game.fxml"));
+	            
+	            root = loader.load();
+	            GameController gameController = loader.getController();
+	            gameController.level(choiceDifficult.getValue());
+	            niveau.setScene(new Scene(root));
+	            niveau.setTitle("Partie");
+	            niveau.getIcons().add(new Image("file:assets/logo.jpg"));
+	            niveau.show();
+	            niveau.setResizable(false);
+	        } catch (IOException e) {
+	            System.out.println("Problème lors de" 
+	                             + " la création de l'interface");
+	        }
+		}
 	}
 }

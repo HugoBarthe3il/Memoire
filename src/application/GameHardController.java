@@ -33,13 +33,13 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameController {
+public class GameHardController {
 	
 	private ObservableList<Cartes> cards = FXCollections.observableArrayList();
 	private ObservableList<Cartes> choiceCards = FXCollections.observableArrayList();
 	private List<ImageView> imgClicked = new ArrayList<>();
 	private int nbPairs;
-	private int duration_game = 20; // valeur par defaut
+	private int duration_game = 15; // valeur par defaut
 	private int scorePartie = 0;
 	private Timeline timer;
 	
@@ -70,6 +70,18 @@ public class GameController {
 	private ImageView carte8;
 	
 	@FXML
+	private ImageView carte9;
+	
+	@FXML
+	private ImageView carte10;
+	
+	@FXML
+	private ImageView carte11;
+	
+	@FXML
+	private ImageView carte12;
+	
+	@FXML
 	private Label time;
 	
 	@FXML
@@ -91,7 +103,11 @@ public class GameController {
 		     new Cartes(3, "file:../../assets/carte3.png"), 
 		     new Cartes(3, "file:../../assets/carte3.png"), 
 		     new Cartes(4, "file:../../assets/carte4.png"), 
-		     new Cartes(4, "file:../../assets/carte4.png")};
+		     new Cartes(4, "file:../../assets/carte4.png"),
+		     new Cartes(5, "file:../../assets/carte5.png"), 
+		     new Cartes(5, "file:../../assets/carte5.png"), 
+		     new Cartes(6, "file:../../assets/carte6.png"), 
+		     new Cartes(6, "file:../../assets/carte6.png")};
 		
 		shuffle(cartes);
 		cards.addAll(cartes);
@@ -108,6 +124,15 @@ public class GameController {
 		carte6.setImage(IMAGE_DOS);
 		carte7.setImage(IMAGE_DOS);
 		carte8.setImage(IMAGE_DOS);
+		carte9.setImage(IMAGE_DOS);
+		carte10.setImage(IMAGE_DOS);
+		carte11.setImage(IMAGE_DOS);
+		carte12.setImage(IMAGE_DOS);
+		
+		time.setText("00:" + duration_game);
+		timer = new Timeline(new KeyFrame(Duration.millis(1000), ae -> showDurationGame()));
+		timer.setCycleCount(duration_game);
+		timer.play();
 		
 		choiceCards.addListener((ListChangeListener.Change<? extends Cartes> change) -> {
 			if (choiceCards.size() == 2) {
@@ -125,25 +150,17 @@ public class GameController {
 		}
 	}
 	
-	public void level(String level) {
-		if (level.equals("Moyen")) {
-			duration_game = 20;
-		} else {
-			duration_game = 40;
-		}
-		time.setText("00:" + duration_game);
-		timer = new Timeline(new KeyFrame(Duration.millis(1000), ae -> showDurationGame()));
-		timer.setCycleCount(duration_game);
-		timer.play();
-	}
-	
 	@FXML
 	public void choiceCard(MouseEvent event) {
 		Main.soundClick();
 		if (choiceCards.size() == 2) choiceCards.clear();
 		Node source = (Node) event.getSource();
 		String id = source.getId();
-		int index = Character.getNumericValue(id.charAt(id.length()-1));
+		String carteId = "" + id.charAt(id.length() - 2) + id.charAt(id.length() - 1);
+		if (carteId.matches("e\\d")) {
+			carteId = "" + carteId.charAt(carteId.length() - 1);
+		}
+		int index = Integer.parseInt(carteId);
 		if (!(choiceCards.contains(cards.get(index - 1)))) {
 			ImageView imgV = (ImageView) event.getSource();
 			imgClicked.add(imgV);
@@ -180,11 +197,13 @@ public class GameController {
 	private void estGagnant() {
 		if (nbPairs == 0 && duration_game > 0) {
 			alert("OH !!!!!!!!!!!!!!!", "Ta gagné 1 M ... de canards en plastiques", "Au plaisir! Score : " + scorePartie);
-			timer.stop();
 			hub.setVisible(true);
 			restart.setVisible(true);
+			timer.stop();
 		} else if(duration_game == 0) {
 			alert("CHEH", "Vous avez perdu...C'est dur non ?", "Bon courage gros !");
+			hub.setVisible(true);
+			restart.setVisible(true);
 			carte1.setVisible(false);
 			carte2.setVisible(false);
 			carte3.setVisible(false);
@@ -193,8 +212,10 @@ public class GameController {
 			carte6.setVisible(false);
 			carte7.setVisible(false);
 			carte8.setVisible(false);
-			hub.setVisible(true);
-			restart.setVisible(true);
+			carte9.setVisible(false);
+			carte10.setVisible(false);
+			carte11.setVisible(false);
+			carte12.setVisible(false);
 		}
 	}
 	
@@ -235,11 +256,9 @@ public class GameController {
             Parent root;
             Stage rapport = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass()
-                         .getResource("Game.fxml"));
+                         .getResource("GameHard.fxml"));
             
             root = loader.load();
-            GameController gameController = loader.getController();
-            gameController.level("Facile");
             rapport.setScene(new Scene(root));
             rapport.setTitle("Partie");
             rapport.getIcons().add(new Image("file:assets/logo.jpg"));

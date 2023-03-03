@@ -7,3 +7,8 @@
 	-fx-background-color: #4CFCB9;
 	-fx-cursor: hand;
 }
+
+#btnRestart:hover {
+	-fx-background-color: yellow;
+	-fx-cursor: hand;
+}

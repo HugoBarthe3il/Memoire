@@ -45,6 +45,22 @@ public class Main extends Application {
 		}
 	}
 	
+	public static void soundClick() {
+		String path = "sounds/click.wav";
+		Media media = new Media(new File(path).toURI().toString());
+		MediaPlayer media_player = new MediaPlayer(media);
+		media_player.setCycleCount(1);
+		media_player.play();
+	}
+	
+	public static void soundCartes() {
+		String path = "sounds/wrong.wav";
+		Media media = new Media(new File(path).toURI().toString());
+		MediaPlayer media_player = new MediaPlayer(media);
+		media_player.setCycleCount(1);
+		media_player.play();
+	}
+	
 	@Override
 	public void stop() throws Exception {
 		System.out.println("[Fermeture du jeu...]");
