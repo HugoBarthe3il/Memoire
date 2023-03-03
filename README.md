@@ -17,7 +17,7 @@ Je me suis organisé de la manière suivante :
   - Ensuite, j'ai créé la logique complète du jeu de mémoire pour le niveau facile et je l'ai adaptée aux autres niveaux.
   - Puis, j'ai terminé la mise en page de l'application.
   
-Cependant, je n'ai pas pu réaliser la personnalisation des cartes. Ayant fait des recherhes à ce sujet, je peux avoir la possibilité d'ajoyuter cete fonctionnalité. Il me suffit de créer une nouvelle vue/controller, et d'ouvrir un explorateuur de fichier afin de mofiider le design des cartes.  
+Cependant, je n'ai pas pu réaliser la personnalisation des cartes. Ayant fait des recherhes à ce sujet, je peux avoir la possibilité d'ajouter cette fonctionnalité. Il me suffit de créer une nouvelle vue/controller, et d'ouvrir un explorateuur de fichier afin de modifier le design des cartes.  
 
 
 <h3 align="left">Connect with me:</h3>
