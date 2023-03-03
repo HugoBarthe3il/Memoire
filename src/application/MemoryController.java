@@ -23,23 +23,33 @@ import javafx.stage.Stage;
 
 public class MemoryController {
 	
+	/* 
+	 * Liste répertoriant les différents niveaux de difficulté 
+	 */
 	private ObservableList<String> levelsItems = FXCollections.observableArrayList("Facile", "Moyen", "Difficile");
 	
 	@FXML
-	private ChoiceBox<String> choiceDifficult;
+	private ChoiceBox<String> choiceDifficult; // choix des niveaux
 	
 	@FXML
-	private Button closeBtn;
+	private Button closeBtn; // permet de fermer l'application
 	
 	@FXML
-	private Button playBtn;
+	private Button playBtn; // permet de lancer un niveau
 	
+	/* 
+	 * Méthode lancé au lancement de la page
+	 */
 	@FXML
 	public void initialize() {
 		choiceDifficult.setItems(levelsItems);
 		choiceDifficult.getSelectionModel().selectFirst();
 	}
 	
+	/**
+	 * Methode permettant de fermer l'application
+	 * @param event au click
+	 */
 	@FXML
 	public void closeGame(ActionEvent event) {
 		Main.soundClick();
@@ -55,6 +65,10 @@ public class MemoryController {
 		}
 	}
 	
+	/**
+	 * Methode permettant de lancer le niveau en fonction de la difficulté
+	 * @param event au click
+	 */
 	@FXML
 	public void startGame(ActionEvent event) {
 		Main.soundClick();

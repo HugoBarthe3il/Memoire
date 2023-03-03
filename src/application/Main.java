@@ -15,12 +15,19 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	
+	/*
+	 * Méthode utilisé avant le lancement de l'application
+	 */
 	@Override
 	public void init() throws Exception {
 		System.out.println("[Lancement du jeu...]");
 		super.init();
 	}
 	
+	
+	/*
+	 * Start permet de lancer l'application en lancant la page d'accueil
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -45,6 +52,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/*
+	 * Méthode permettant d'ajouetr un sample lorsque que l'utilisateur
+	 * clique sur un élément
+	 */
 	public static void soundClick() {
 		String path = "sounds/click.wav";
 		Media media = new Media(new File(path).toURI().toString());
@@ -53,6 +64,11 @@ public class Main extends Application {
 		media_player.play();
 	}
 	
+	
+	/*
+	 * Méthode permettant d'ajouetr un sample lorsque que l'utilisateur
+	 * se trompe
+	 */
 	public static void soundCartes() {
 		String path = "sounds/wrong.wav";
 		Media media = new Media(new File(path).toURI().toString());
@@ -61,6 +77,9 @@ public class Main extends Application {
 		media_player.play();
 	}
 	
+	/*
+	 * Méthode utilisé apres la fermeture de l'application
+	 */
 	@Override
 	public void stop() throws Exception {
 		System.out.println("[Fermeture du jeu...]");

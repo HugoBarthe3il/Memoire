@@ -35,15 +35,15 @@ import javafx.util.Duration;
 
 public class GameController {
 	
-	private ObservableList<Cartes> cards = FXCollections.observableArrayList();
-	private ObservableList<Cartes> choiceCards = FXCollections.observableArrayList();
-	private List<ImageView> imgClicked = new ArrayList<>();
-	private int nbPairs;
+	private ObservableList<Cartes> cards = FXCollections.observableArrayList(); // stocke les cartes
+	private ObservableList<Cartes> choiceCards = FXCollections.observableArrayList(); // stocke les cartes choisies
+	private List<ImageView> imgClicked = new ArrayList<>(); // stocke les images des cartes choisies
+	private int nbPairs; // nombre de paire de la partie
 	private int duration_game = 20; // valeur par defaut
-	private int scorePartie = 0;
+	private int scorePartie = 0; // score au debut
 	private Timeline timer;
 	
-	private final Image IMAGE_DOS = new Image("file:../../assets/cards.png");
+	private final Image IMAGE_DOS = new Image("file:../../assets/cards.png"); // Image de dos des images
 	
 	@FXML
 	private ImageView carte1;
@@ -81,6 +81,10 @@ public class GameController {
 	@FXML
 	private Button restart;
 	
+	/**
+	 * Cette méthode permet de créer les cartes sur le plateau
+	 * en affichant ses cartes retournés
+	 */
 	@FXML
 	public void initialize() {
 		Cartes cartes[] = 
@@ -100,6 +104,7 @@ public class GameController {
 		hub.setVisible(false);
 		restart.setVisible(false);
 		
+		/* Initialise les images des cartes avec le dos de la carte */
 		carte1.setImage(IMAGE_DOS);
 		carte2.setImage(IMAGE_DOS);
 		carte3.setImage(IMAGE_DOS);
@@ -109,6 +114,7 @@ public class GameController {
 		carte7.setImage(IMAGE_DOS);
 		carte8.setImage(IMAGE_DOS);
 		
+		/* Ajoute un listener sur notre liste */
 		choiceCards.addListener((ListChangeListener.Change<? extends Cartes> change) -> {
 			if (choiceCards.size() == 2) {
 				checkIfIsSameFamily(choiceCards.get(0), choiceCards.get(1));
@@ -116,6 +122,9 @@ public class GameController {
 		});
 	}
 	
+	/**
+	 * Cette méthode permet de décrémenter le timer
+	 */
 	private void showDurationGame() {
 		duration_game--;
 		String resultat = duration_game < 10 ? "0" + duration_game : "" + duration_game;
@@ -125,6 +134,11 @@ public class GameController {
 		}
 	}
 	
+	/**
+	 * Permet de communiquer entre les controlers.
+	 * De la page d'accueil à la page de partie
+	 * @param level correspondant à la difficulté
+	 */
 	public void level(String level) {
 		if (level.equals("Moyen")) {
 			duration_game = 20;
@@ -137,6 +151,10 @@ public class GameController {
 		timer.play();
 	}
 	
+	/**
+	 * Méthode permettant d'ajouter la carte chosie dans notre liste
+	 * @param event au clic de la carte
+	 */
 	@FXML
 	public void choiceCard(MouseEvent event) {
 		Main.soundClick();
@@ -153,6 +171,11 @@ public class GameController {
 		}
 	}
 	
+	/**
+	 * Cette méthode regarde si les 2 cartes sont de la meme famille
+	 * @param c1 carte à comparer
+	 * @param c2 carte à comparer
+	 */
 	private void checkIfIsSameFamily(Cartes c1, Cartes c2) {
 		if (c1.getId() == c2.getId()) {
 			imgClicked.get(0).setVisible(false);
@@ -177,6 +200,9 @@ public class GameController {
 		imgClicked.clear();
 	}
 	
+	/**
+	 * Permet de savoir si le niveau est fini
+	 */
 	private void estGagnant() {
 		if (nbPairs == 0 && duration_game > 0) {
 			alert("OH !!!!!!!!!!!!!!!", "Ta gagné 1 M ... de canards en plastiques", "Au plaisir! Score : " + scorePartie);
@@ -198,6 +224,12 @@ public class GameController {
 		}
 	}
 	
+	/**
+	 * Méthode permettant de créer une pop up
+	 * @param title
+	 * @param header
+	 * @param content
+	 */
 	private void alert(String title, String header, String content) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(title);
@@ -206,6 +238,10 @@ public class GameController {
 		alert.show();
 	}
 	
+	/**
+	 * Methode permettant de retourner à la page d'accueil
+	 * @param event
+	 */
 	@FXML
 	public void goToHub(ActionEvent event) {
 		Main.soundClick();
@@ -227,6 +263,10 @@ public class GameController {
         }
 	}
 	
+	/**
+	 * Methode permettant de relancer la partie
+	 * @param event
+	 */
 	@FXML
 	public void restartGame(ActionEvent event) {
 		Main.soundClick();
@@ -250,6 +290,10 @@ public class GameController {
         }
 	}
 	
+	/**
+	 * Permet de mélanger un tableau aléatoirement
+	 * @param array
+	 */
 	private static void shuffle(Cartes[] array) {
 	    Random random = new Random();
 	    for (int i = array.length - 1; i > 0; i--) {

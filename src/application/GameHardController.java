@@ -93,6 +93,10 @@ public class GameHardController {
 	@FXML
 	private Button restart;
 	
+	/**
+	 * Cette méthode permet de créer les cartes sur le plateau
+	 * en affichant ses cartes retournés
+	 */
 	@FXML
 	public void initialize() {
 		Cartes cartes[] = 
@@ -141,6 +145,9 @@ public class GameHardController {
 		});
 	}
 	
+	/**
+	 * Cette méthode permet de décrémenter le timer
+	 */
 	private void showDurationGame() {
 		duration_game--;
 		String resultat = duration_game < 10 ? "0" + duration_game : "" + duration_game;
@@ -150,6 +157,10 @@ public class GameHardController {
 		}
 	}
 	
+	/**
+	 * Méthode permettant d'ajouter la carte chosie dans notre liste
+	 * @param event au clic de la carte
+	 */
 	@FXML
 	public void choiceCard(MouseEvent event) {
 		Main.soundClick();
@@ -170,6 +181,11 @@ public class GameHardController {
 		}
 	}
 	
+	/**
+	 * Cette méthode regarde si les 2 cartes sont de la meme famille
+	 * @param c1 carte à comparer
+	 * @param c2 carte à comparer
+	 */
 	private void checkIfIsSameFamily(Cartes c1, Cartes c2) {
 		if (c1.getId() == c2.getId()) {
 			imgClicked.get(0).setVisible(false);
@@ -194,6 +210,9 @@ public class GameHardController {
 		imgClicked.clear();
 	}
 	
+	/**
+	 * Permet de savoir si le niveau est fini
+	 */
 	private void estGagnant() {
 		if (nbPairs == 0 && duration_game > 0) {
 			alert("OH !!!!!!!!!!!!!!!", "Ta gagné 1 M ... de canards en plastiques", "Au plaisir! Score : " + scorePartie);
@@ -218,7 +237,13 @@ public class GameHardController {
 			carte12.setVisible(false);
 		}
 	}
-	
+
+	/**
+	 * Méthode permettant de créer une pop up
+	 * @param title
+	 * @param header
+	 * @param content
+	 */
 	private void alert(String title, String header, String content) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(title);
@@ -227,6 +252,10 @@ public class GameHardController {
 		alert.show();
 	}
 	
+	/**
+	 * Methode permettant de retourner à la page d'accueil
+	 * @param event
+	 */
 	@FXML
 	public void goToHub(ActionEvent event) {
 		Main.soundClick();
@@ -248,6 +277,10 @@ public class GameHardController {
         }
 	}
 	
+	/**
+	 * Methode permettant de relancer la partie
+	 * @param event
+	 */
 	@FXML
 	public void restartGame(ActionEvent event) {
 		Main.soundClick();
@@ -268,7 +301,11 @@ public class GameHardController {
                              + " la création de l'interface");
         }
 	}
-	
+
+	/**
+	 * Permet de mélanger un tableau aléatoirement
+	 * @param array
+	 */
 	private static void shuffle(Cartes[] array) {
 	    Random random = new Random();
 	    for (int i = array.length - 1; i > 0; i--) {
